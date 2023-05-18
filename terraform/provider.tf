@@ -1,7 +1,7 @@
 # PROVIDER
 terraform {
 
-  required_version = "~> 1.4"
+  required_version = "~> 1.2"
 
   required_providers {
     aws = {
@@ -9,19 +9,10 @@ terraform {
       version = "~> 4.55"
     }
   }
-
-  backend "s3" {
-    bucket         = "tf-staticsite-s3-state-v1"
-    key            = "terraform.tfstate"
-    dynamodb_table = "tf-staticsite-s3-state-v1"
-    region         = "us-east-1"
-  }
-
 }
-
 provider "aws" {
   region                   = "us-east-1"
-  # shared_config_files      = ["~/.aws/config"]
-  # shared_credentials_files = ["~/.aws/credentials"]
-  # profile                  = "fiap"
+  shared_config_files      = ["~/.aws/config"]
+  shared_credentials_files = ["~/.aws/credentials"]
+  profile                  = "fiap"
 }
